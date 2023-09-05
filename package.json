@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/bitcoinerlab/configs.git"
   },
+  "scripts": {
+    "tester": "scripts/tester.sh"
+  },
   "keywords": [
     "config",
     "shared",
