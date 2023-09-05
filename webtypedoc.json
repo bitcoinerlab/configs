@@ -5,6 +5,9 @@
   "hideGenerator": true,
   "entryPoints": "../../../src/index.ts",
   "plugin": "typedoc-plugin-missing-exports",
+  "customCss": "./webtypedoc.css",
   "excludeExternals": true,
+  "readme": "none",
   "includeVersion": true,
+  "out": "webdoc"
 }
