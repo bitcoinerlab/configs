@@ -1,0 +1,16 @@
+{
+  "name": "@bitcoinerlab/configs",
+  "version": "1.0.0",
+  "description": "Shared configuration files for BitcoinerLab projects.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitcoinerlab/configs.git"
+  },
+  "keywords": [
+    "config",
+    "shared",
+    "bitcoinerlab"
+  ],
+  "author": "Jose-Luis Landabaso",
+  "license": "MIT"
+}
