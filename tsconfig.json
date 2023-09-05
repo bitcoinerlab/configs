@@ -1,4 +1,5 @@
 {
+  "baseUrl": "../../.."
   "display": "Node 16 + Strictest",
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
