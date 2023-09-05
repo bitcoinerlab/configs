@@ -2,6 +2,7 @@
   "name": "@bitcoinerlab/configs",
   "version": "1.0.0",
   "description": "Shared configuration files for BitcoinerLab projects.",
+  "prettier": "./prettierConfig.json",
   "repository": {
     "type": "git",
     "url": "https://github.com/bitcoinerlab/configs.git"
