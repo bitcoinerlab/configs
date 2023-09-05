@@ -9,5 +9,5 @@
   "excludeExternals": true,
   "readme": "none",
   "includeVersion": true,
-  "out": "webdoc"
+  "out": "../../../webdoc"
 }
