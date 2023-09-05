@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin');
+
+.title {
+  display: none;
+}
+.tsd-theme-toggle {
+  display: none;
+}
+
+body {
+    background: transparent;
+    font-family: Ubuntu, "Segoe UI", sans-serif;
+    color: var(--color-text);
+    font-size: 1rem;
+}
+html {
+    font-size: 1rem;
+}
+.tsd-page-title h2 {
+    display: none;
+}
+.tsd-page-toolbar {
+    display: none;
+}
+.container-main {
+  margin-top: 0;
+}
+.col-sidebar {
+  top: 0;
+}
+.col-content {
+  margin-top: 2rem;
+}
+.site-menu {
+  padding-top: 1rem;
+  margin-top: 0;
+  top:0;
+}

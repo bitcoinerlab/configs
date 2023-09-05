@@ -1,0 +1,11 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "internalModule": "_Internal_",
+  "hideGenerator": true,
+  "entryPoints": "src/index.ts",
+  "plugin": "typedoc-plugin-missing-exports",
+  "customCss": "customDocs.css",
+  "excludeExternals": true,
+  "readme": "none",
+  "includeVersion": true,
+}
