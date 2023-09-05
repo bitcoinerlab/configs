@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": null
   },
-  "include": ["./test/**/*.ts"]
+  "include": ["../../../test/**/*.ts"]
 }
