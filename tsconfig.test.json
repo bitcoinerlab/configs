@@ -1,6 +1,6 @@
 {
   "baseUrl": "../../.."
-  "extends": "./tsconfig.json",
+  "extends": "node_modules/@bitcoinerlab/configs/tsconfig.json",
   "compilerOptions": {
     "outDir": null
   },
