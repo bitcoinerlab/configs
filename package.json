@@ -11,6 +11,7 @@
     "url": "https://github.com/bitcoinerlab/configs.git"
   },
   "scripts": {
+    "postinstall": "node postinstall.js",
     "tester": "scripts/tester.sh",
     "ensureTester": "scripts/ensureTester.sh"
   },
