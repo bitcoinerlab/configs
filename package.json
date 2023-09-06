@@ -12,6 +12,7 @@
   },
   "scripts": {
     "tester": "scripts/tester.sh"
+    "ensureTester": "scripts/ensureTester.sh"
   },
   "keywords": [
     "config",
