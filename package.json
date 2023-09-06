@@ -11,6 +11,7 @@
     "url": "https://github.com/bitcoinerlab/configs.git"
   },
   "scripts": {
+    "preinstall": "node preinstall.js",
     "tester": "scripts/tester.sh",
     "ensureTester": "scripts/ensureTester.sh"
   },
@@ -34,5 +35,8 @@
     "typedoc": "^0.25.1",
     "typedoc-plugin-missing-exports": "^2.1.0",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security"
   }
 }
