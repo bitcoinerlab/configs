@@ -2,6 +2,9 @@
   "$schema": "https://typedoc.org/schema.json",
   "extends": "./typedoc.json",
 
+  "tsconfig": "./js_tsconfig.json",
+  "entryPoints": ["../../../src/index.js"],
+
   "customCss": "./webtypedoc.css",
   "readme": "none",
   "out": "../../../webdocs"
