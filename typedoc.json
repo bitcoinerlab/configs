@@ -7,4 +7,5 @@
   "plugin": "typedoc-plugin-missing-exports",
   "excludeExternals": true,
   "includeVersion": true,
+  "sort": ["source-order"]
 }

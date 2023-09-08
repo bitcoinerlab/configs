@@ -9,5 +9,6 @@
   "excludeExternals": true,
   "readme": "none",
   "includeVersion": true,
-  "out": "../../../webdocs"
+  "out": "../../../webdocs",
+  "sort": ["source-order"]
 }
