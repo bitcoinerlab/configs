@@ -8,4 +8,20 @@
 # docker ps | grep bitcoinerlab/tester > /dev/null || (docker pull bitcoinerlab/tester && docker run -d -p 8080:8080 -p 60401:60401 -p 3002:3002 bitcoinerlab/tester && sleep 5)
 
 # Using now bitcoinerlab/tape container which is better maintained
-docker ps | grep bitcoinerlab_tester_instance > /dev/null || (docker pull bitcoinerlab/tape && docker run -d --name bitcoinerlab_tester_instance -p 8080:8080 -p 60401:60401 -p 3002:3002 bitcoinerlab/tape && sleep 5)
+
+docker ps | grep bitcoinerlab_tester_instance >/dev/null || (
+  docker pull bitcoinerlab/tape &&
+    (
+      docker start bitcoinerlab_tester_instance ||
+        (
+          docker rm -f bitcoinerlab_tester_instance &&
+            docker volume create bitcoinerlab_tester_data &&
+            docker run -d \
+              --name bitcoinerlab_tester_instance \
+              -v bitcoinerlab_tester_data:/root/tape-volume \
+              -p 8080:8080 -p 60401:60401 -p 3002:3002 -p 5123:5000 \
+              bitcoinerlab/tape
+        )
+    ) &&
+    sleep 5
+)

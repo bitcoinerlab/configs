@@ -1,6 +1,6 @@
 {
   "name": "@bitcoinerlab/configs",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Shared configuration files for BitcoinerLab projects.",
   "prettier": "./prettierConfig.json",
   "eslintConfig": {
@@ -11,7 +11,6 @@
     "url": "https://github.com/bitcoinerlab/configs.git"
   },
   "scripts": {
-    "tester": "scripts/tester.sh",
     "ensureTester": "scripts/ensureTester.sh"
   },
   "keywords": [
@@ -21,6 +20,21 @@
   ],
   "author": "Jose-Luis Landabaso",
   "license": "MIT",
+  "files": [
+    "eslintConfig.js",
+    "jest-preset.js",
+    "js_tsconfig.json",
+    "js_typedoc.json",
+    "js_webtypedoc.json",
+    "prettierConfig.json",
+    "scripts/",
+    "tsconfig.json",
+    "tsconfig.src.json",
+    "tsconfig.test.json",
+    "typedoc.json",
+    "webtypedoc.css",
+    "webtypedoc.json"
+  ],
   "dependencies": {
     "@types/jest": "^29.5.4",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
