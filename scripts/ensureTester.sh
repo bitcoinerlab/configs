@@ -1,27 +1,50 @@
 #!/bin/bash
-# Checks if the 'tester' container is running.
-# If not, pulls the latest 'bitcoinerlab/tester' image and starts a new container.
-# Introduces a 5-second sleep after starting the container for the first time to ensure consistent readiness.
-# The sleep ensures that, regardless of whether the user knows the initial state of the container (running or not),
-# the script always returns with the container in a similarly ready state.
+# Ensures the Bitcoinerlab Tape container is running and ready.
+#
+# Behavior:
+# - Uses the environment variables below (or defaults if not set):
+#     REGTEST_SERVER_PORT (default: 8080)
+#     ELECTRUM_PORT (default: 60401)
+#     ESPLORA_PORT (default: 3002)
+#     ESPLORA_BLOCK_EXPLORER_PORT (default: 5123)
+#     CONTAINER_NAME (default: bitcoinerlab_tester_instance)
+#
+# - Pulls the latest `bitcoinerlab/tape` image if needed.
+# - Starts or creates the container if not already running.
+# - Waits 5 seconds to ensure it's ready.
 
-# docker ps | grep bitcoinerlab/tester > /dev/null || (docker pull bitcoinerlab/tester && docker run -d -p 8080:8080 -p 60401:60401 -p 3002:3002 bitcoinerlab/tester && sleep 5)
+set -e
 
-# Using now bitcoinerlab/tape container which is better maintained
+# Default values for environment variables
+REGTEST_SERVER_PORT="${REGTEST_SERVER_PORT:-8080}"
+ELECTRUM_PORT="${ELECTRUM_PORT:-60401}"
+ESPLORA_PORT="${ESPLORA_PORT:-3002}"
+ESPLORA_BLOCK_EXPLORER_PORT="${ESPLORA_BLOCK_EXPLORER_PORT:-5123}"
+CONTAINER_NAME="${CONTAINER_NAME:-bitcoinerlab_tester_instance}"
+VOLUME_NAME="${CONTAINER_NAME}_data"
 
-docker ps | grep bitcoinerlab_tester_instance >/dev/null || (
-  docker pull bitcoinerlab/tape &&
-    (
-      docker start bitcoinerlab_tester_instance ||
-        (
-          docker rm -f bitcoinerlab_tester_instance &&
-            docker volume create bitcoinerlab_tester_data &&
-            docker run -d \
-              --name bitcoinerlab_tester_instance \
-              -v bitcoinerlab_tester_data:/root/tape-volume \
-              -p 8080:8080 -p 60401:60401 -p 3002:3002 -p 5123:5000 \
-              bitcoinerlab/tape
-        )
-    ) &&
-    sleep 5
-)
+# Check if the container is already running
+if docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
+  exit 0
+fi
+
+# Ensure latest image
+docker pull bitcoinerlab/tape >/dev/null
+
+# Start existing container if it exists, else recreate
+if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
+  docker start "${CONTAINER_NAME}" >/dev/null
+else
+  docker volume create "${VOLUME_NAME}" >/dev/null
+  docker run -d \
+    --name "${CONTAINER_NAME}" \
+    -v "${VOLUME_NAME}:/root/tape-volume" \
+    -p "${REGTEST_SERVER_PORT}:8080" \
+    -p "${ELECTRUM_PORT}:60401" \
+    -p "${ESPLORA_PORT}:3002" \
+    -p "${ESPLORA_BLOCK_EXPLORER_PORT}:5000" \
+    bitcoinerlab/tape >/dev/null
+fi
+
+# Wait for container readiness
+sleep 5

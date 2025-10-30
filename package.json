@@ -1,6 +1,6 @@
 {
   "name": "@bitcoinerlab/configs",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Shared configuration files for BitcoinerLab projects.",
   "prettier": "./prettierConfig.json",
   "eslintConfig": {
