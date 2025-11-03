@@ -1,6 +1,12 @@
 {
   "display": "Node 16 + Strictest",
   "compilerOptions": {
+    //so that i can use import xxx from "~/.."
+    "paths": {
+      "~/*": [
+        "../../../src/*"
+      ]
+    },
     "ignoreDeprecations": "5.0",
     "declaration": true,
     "lib": ["es2021", "dom"],
